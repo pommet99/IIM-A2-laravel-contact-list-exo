@@ -1,20 +1,5 @@
-#Installation : 
+#Lien des instructions pour l'exercice : 
 
-* Dans un terminal à la racine du projet
-```
-composer install
-npm run watch
-
-//Dans un autre terminal
-php artisan serve
-
-```
-
-* Copier .env.example dans un fichier .env et remplir les informations de DB
-```
-php artisan migrate
-php artisan db:seed
-```
-
+https://docs.google.com/presentation/d/1-4eLLvtsLMdsqpgfXV1n_2BScdg9oUHxIQBZohzSTr0/edit?usp=sharing
 
 
