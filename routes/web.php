@@ -14,5 +14,6 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::resource('/contacts', 'ContactController');
+Route::get('/', 'TodoController@index');
+Route::resource('todo', 'TodoController');
+
