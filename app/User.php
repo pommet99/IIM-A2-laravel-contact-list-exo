@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-
     use Notifiable;
 
     /**
@@ -41,7 +40,7 @@ class User extends Authenticatable
 
     /* TODO Relation pour récupérer les contacts d'un utilisateur */
 
-    public function contacts(){
+    public function Contacts(){
         return $this->hasMany('App\Contact');
     }
 }

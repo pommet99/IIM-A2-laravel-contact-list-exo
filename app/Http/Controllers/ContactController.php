@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +17,8 @@ class ContactController extends Controller
     public function index()
     {
         //
-        $userId = auth()->user()->id;
-        $contacts = Contact::where('user_id', $userId)->get();
-        return view ('contacts.index', array('contacts' => $contacts));
+        return view('contacts/edit');
+        
     }
 
     /**
@@ -28,8 +29,6 @@ class ContactController extends Controller
     public function create()
     {
         //
-
-        return view ('contacts.create');
     }
 
     /**
@@ -41,21 +40,6 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
-        $validcontact = $request->validate([
-            'name' => "required",
-            'tel' => "required",
-            'email' => "required",
-
-        ]);
-
-        $contact = new Contact($validcontact);
-        $contact->name = $_POST['name'];
-        $contact->tel = $_POST['tel'];
-        $contact->email = $_POST['email'];
-        $contact->user_id = auth()->user()->id;
-        $contact->save();
-
-        return redirect()->route('contacts.index');
     }
 
     /**
@@ -67,6 +51,7 @@ class ContactController extends Controller
     public function show(Contact $contact)
     {
         //
+        
     }
 
     /**
@@ -78,9 +63,6 @@ class ContactController extends Controller
     public function edit(Contact $contact)
     {
         //
-        return view('contacts.edit',['contact' => $contact]);
-       
-
     }
 
     /**
@@ -93,17 +75,6 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact)
     {
         //
-        $validcontact = request()->validate([
-            'name' => 'required',
-            'tel' => 'required',
-            'email' => 'required'
-        ]);
-        
-        $contact->fill($validcontact);
-        $contact->save();
-
-        return redirect()->route('contacts.index');
-
     }
 
     /**
@@ -115,9 +86,5 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         //
-       $contact->delete();
-
-       return redirect()->route('contacts.index');
-
     }
 }

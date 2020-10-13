@@ -4,42 +4,32 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Créer un contact</h3>
-                <form method='post' action='{{route('contacts.store')}}'>
+                <h3>Create a Contact</h3>
                     <!-- TODO mise en place de la form pour créer un contact -->
-                    @csrf
-                        <div class="form-group">
-                            <label for="name">Nom</label>
-                            <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Entrer le nom" value="{{old('name')}}">
-                                @error('email')
-                                <div class="invalid-feedback">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                        </div>
+                    <form action="{{route('contacts')}}" methode="post">
+                     @csrf
+                     @method('put')
 
-                        <div class="form-group">
-                            <label for="text">Telephone</label>
-                            <input name="tel" type="text" class="form-control @error('tel') is-invalid @enderror" id="tel" placeholder="Entrer le numéro de téléphone" value="{{old('tel')}}">
-                                @error('email')
-                                <div class="invalid-feedback">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                        </div>
+                     <input type="text" name="name" value="{{old('name', "valeur par defaut")}}">
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Entrer votre email" value="{{old('email')}}">
-                                @error('email')
-                                <div class="invalid-feedback">
-                                    {{$message}}
-                                </div>
-                                @enderror
-                        </div>
+                     @error('name')
+                     Error in "name"
+                     @enderror
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                     <input type="text" name="tel" value="{{old('tel', "valeur par defaut")}}">
+
+                     @error('tel')
+                     Error in "tel"
+                     @enderror
+
+                     <input type="text" name="email" value="{{old('email', "valeur par defaut")}}">
+
+                     @error('email')
+                     Error in "email"
+                     @enderror
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
             </div>
         </div>
     </div>

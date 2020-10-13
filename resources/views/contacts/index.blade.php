@@ -1,11 +1,11 @@
 @extends('layouts.app');
 
-@section('content');
+@section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <!-- TODO href de la balise <a> pour pointer vers la route de création de contact -->
-                <a class="btn btn-primary float-right" href="{{route('contacts.create')}}">Ajouter un contact</a>
+                <a class="btn btn-primary float-right" href="create.blade.php">Add a Contact</a>
             </div>
         </div>
         <div class="row">
@@ -14,8 +14,8 @@
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nom du contact</th>
-                        <th scope="col">Téléphone</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
                         <th scope="col">Email</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -31,14 +31,14 @@
 
                         <td>
                             <!-- TODO href de la balise <a> pour pointer vers la route de modification du contact -->
-                            <a class="btn btn-primary" href="{{route('contacts.edit', $contact->id)}}">Modifier</a>
+                            <a class="btn btn-primary" href="{{route('contacts.edit', $contact->id)}}">Modify</a>
+                            <a class="btn btn-danger" onclick="document.getElementById('delete-form-{{$contact->id}}').submit()">Delete</a>
+                            
 
-
-                            <a class="btn btn-danger" onclick="document.getElementById('delete-form-{{$contact->id}}').submit()">Supprimer</a>
+                            <!-- TODO Form pour la suppression d'un contact -->
                             <form id="delete-form-{{$contact->id}}" method='post' action="{{route('contacts.destroy', $contact->id)}}">
-                                @csrf
-                                @method('delete')
-                                <!-- TODO Form pour la suppression d'un contact -->
+                            @csrf
+                            @method('delete')
 
                             </form>
                         </td>
@@ -46,7 +46,7 @@
                     <!-- TODO : Conditions pas de contact -->
                     @empty
                     <tr>
-                        <td>Vous n'avez pas encore de contact</td>
+                        <td>You don't have any contacts</td>
                     </tr>
                     <!-- TODO : FIN Boucle -->
                     @endforelse
